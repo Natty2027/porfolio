@@ -196,6 +196,23 @@
     }
     .about p strong { color: var(--accent); font-weight: 600; }
     .about p.muted { color: var(--text-dim); font-size: 16px; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .portrait {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .portrait { width: 140px; height: 140px; }
+    }
 
     footer {
       padding: 48px 0;
@@ -241,9 +258,14 @@
   <section id="about" class="about">
     <div class="container">
       <h2>About</h2>
-      <p>Hi — I'm Nathan. I spent twelve years in the Navy running operations and security programs: managing classified material across three continents, leading teams of thirty-plus, and picking up CompTIA Security+ along the way. A couple of years ago I started building software, and it stuck.</p>
-      <p>Now I ship full-stack products — <strong>Cognivate</strong>, an AI study app currently in App Review; a Plaid-powered subscription detector that catches the gym memberships you forgot about; an AI career-prep platform with full Stripe billing and Gemini-driven mock interviews. Usually solo, sometimes with a team.</p>
-      <p class="muted">Finishing my BS at San Francisco State this December. Looking for engineering roles where the work ends up in front of real people. Based in Walnut Creek, CA — reach me at <a href="mailto:johbson19962@gmail.com" style="color: var(--accent); text-decoration: none;">johbson19962@gmail.com</a>.</p>
+      <div class="about-grid">
+        <img class="portrait" src="portrait.jpg" alt="Nathan Johnson" />
+        <div>
+          <p>Hi — I'm Nathan. I spent twelve years in the Navy running operations and security programs: managing classified material across three continents, leading teams of thirty-plus, and picking up CompTIA Security+ along the way. A couple of years ago I started building software, and it stuck.</p>
+          <p>Now I ship full-stack products — <strong>Cognivate</strong>, an AI study app currently in App Review; a Plaid-powered subscription detector that catches the gym memberships you forgot about; an AI career-prep platform with full Stripe billing and Gemini-driven mock interviews. Usually solo, sometimes with a team.</p>
+          <p class="muted">Finishing my BS at San Francisco State this December. Looking for engineering roles where the work ends up in front of real people. Based in Walnut Creek, CA — reach me at <a href="mailto:johbson19962@gmail.com" style="color: var(--accent); text-decoration: none;">johbson19962@gmail.com</a>.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -278,7 +300,7 @@
         <span class="tech">React Query</span>
       </div>
       <div class="case-links">
-        <a href="https://github.com/Natty2027/Cognivate-Expo" target="_blank" rel="noopener">Portfolio source →</a>
+        <a href="cognivate.html">Learn more →</a>
       </div>
     </div>
   </section>
@@ -304,7 +326,7 @@
         </div>
         <div class="case-links">
           <a href="https://ais-dev-aqnnrjsivvs2qceo6kbtep-53818546317.us-east5.run.app" target="_blank" rel="noopener">Live demo →</a>
-          <a href="https://github.com/Natty2027/Role-Accel-Home" target="_blank" rel="noopener">Code →</a>
+          <a href="role-accel.html">Learn more →</a>
         </div>
       </div>
 
@@ -325,7 +347,7 @@
           <span class="tech">Vitest</span>
         </div>
         <div class="case-links">
-          <a href="https://github.com/Natty2027/Unified-Audit-Showcase" target="_blank" rel="noopener">Code →</a>
+          <a href="audit.html">Learn more →</a>
         </div>
       </div>
 
@@ -346,7 +368,7 @@
           <span class="tech">pnpm workspaces</span>
         </div>
         <div class="case-links">
-          <a href="https://github.com/Natty2027/Money-Firewall" target="_blank" rel="noopener">Code →</a>
+          <a href="money-firewall.html">Learn more →</a>
         </div>
       </div>
 
@@ -364,7 +386,7 @@
           <span class="tech">Team of 5</span>
         </div>
         <div class="case-links">
-          <a href="https://github.com/Natty2027/Tutor-link-team01-deployment" target="_blank" rel="noopener">Code →</a>
+          <a href="tutor-link.html">Learn more →</a>
         </div>
       </div>
     </div>
