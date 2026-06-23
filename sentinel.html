@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sentinel Shield — Nathan Johnson</title>
+  <meta name="description" content="Mobile threat defense app that blocks malicious DNS and URLs in real time, turns every blocked event into a security lesson, and produces NIST SP 800-171 compliance evidence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a class="logo" href="index.html">Nathan Johnson</a>
+      <div>
+        <a href="index.html#about">About</a>
+        <a href="index.html#work">Work</a>
+        <a href="https://github.com/Natty2027">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="detail-hero">
+    <div class="container">
+      <a class="back-link" href="index.html">← Back to portfolio</a>
+      <span class="label">Mobile · Security · Compliance</span>
+      <h1>Sentinel Shield</h1>
+      <p class="subtitle">Mobile threat defense that blocks malicious DNS and URLs in real time — then turns every blocked event into an interactive security lesson and machine-verifiable compliance evidence mapped to NIST SP 800-171.</p>
+      <div class="tech-list">
+        <span class="tech">React Native</span>
+        <span class="tech">Expo</span>
+        <span class="tech">TypeScript</span>
+        <span class="tech">Swift</span>
+        <span class="tech">Network Extension</span>
+        <span class="tech">iOS App Groups</span>
+        <span class="tech">expo-router</span>
+        <span class="tech">React Query</span>
+        <span class="tech">NIST SP 800-171</span>
+        <span class="tech">Hash-chain evidence</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="detail-body" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <h3>The idea</h3>
+      <p>Most security tools tell you something was blocked and move on. Sentinel Shield treats every blocked threat as a teachable moment and a compliance data point. A phishing link blocked → a micro-lesson on why that domain pattern is dangerous → a signed, timestamped evidence record tagged to the relevant NIST control. The same mobile device that faces the threat also learns from it and proves it.</p>
+      <p>The target audience is security-conscious individuals and small organizations under compliance obligations — contractors, consultants, and anyone who needs to demonstrate security awareness and posture without a dedicated security team.</p>
+
+      <h3>What I built</h3>
+      <ul>
+        <li><strong>Shield screen</strong> — real-time protection status, today's block counts broken down by threat kind (phishing, malware, C2, tracker), posture score, and navigation to Activity and Evidence. A "Simulate incoming threat" button injects a realistic blocked event from a curated pool so the protect → learn → evidence loop is fully demonstrable without the native filter running.</li>
+        <li><strong>Activity screen</strong> — every blocked event expands into a control-tagged lesson: the blocked host, why it was flagged, a practical security habit the user should adopt, and the NIST SP 800-171 control it maps to. Tapping "Got it" marks the lesson learned and logs an awareness evidence record.</li>
+        <li><strong>Evidence screen</strong> — control-mapped posture view. Each evidence row is signed and hash-chained to the previous record, creating a tamper-evident log that can be shared with a compliance officer or auditor without exposing browsing history. The privacy-preserving note explains what is and isn't in the evidence chain.</li>
+        <li><strong>Native filter boundary</strong> — the DNS/URL content filter is a native iOS Network Extension, not JavaScript. The seam is <code>lib/networkExtension.ts</code>, which calls a native Swift module (<code>SentinelFilter</code>) exposing <code>start()</code>, <code>stop()</code>, <code>getStatus()</code>, and an <code>onThreatBlocked</code> event. The JS app runs fully without the native layer via graceful no-ops — the entire UI is functional today using the simulator path.</li>
+        <li><strong>On-device reputation set</strong> — the Swift filter checks each connection against a Bloom filter shipped in the app bundle, updated server-side. Blocked events are appended to a shared App Group store and consumed by the React Native layer via the native module event.</li>
+        <li><strong>Hash-chain evidence</strong> — <code>lib/evidence.ts</code> signs and chains evidence records cross-platform using <code>expo-crypto</code>. Each record includes a SHA-256 digest of the previous record's hash, a timestamp, the control ID, and a summary — no host or URL in the chain. In production the <code>signDigest()</code> call swaps to a Secure Enclave key and App Attest without changing the chain format.</li>
+      </ul>
+
+      <h3>The Cognivate connection</h3>
+      <p>Sentinel Shield is built to drop straight into the same monorepo as Cognivate. It reuses the same component conventions (<code>Card</code>, <code>PrimaryButton</code>), the same theming system (<code>constants/colors.ts</code>, <code>hooks/useColors.ts</code>, <code>lib/design/tokens.ts</code>), the same auth/billing seam in <code>_layout.tsx</code>, and the same API client pattern (<code>customFetch</code>, React Query hooks). Anything I shipped in Cognivate — haptics, Reanimated press states, expo-router file-based routing, EAS Build pipeline — carries over for free.</p>
+
+      <h3>What makes it interesting</h3>
+      <p>The native boundary is the hard part. iOS Network Extension runs in a separate process with a small memory budget and no access to the UI thread. Shipping blocked events to the React Native layer requires an App Group shared container, a polling or notification bridge, and careful memory discipline in Swift so the extension doesn't get killed mid-connection. The JS side is intentionally unaware of those details — it just consumes events from the native module interface.</p>
+      <p>The hash-chain design is deliberately minimal. It doesn't prove what the user did; it proves that a sequence of events happened in order and haven't been tampered with since they were recorded. That's enough to satisfy an auditor asking "show me your security awareness activity" without requiring users to hand over a browsing log.</p>
+
+      <h3>Status</h3>
+      <p>React Native application and native Swift scaffold complete. UI runs end-to-end using the simulator path. The Network Extension target requires a one-time Xcode setup (entitlement provisioning, App Group, UDP forwarding in the Swift provider) before the live filter is active. <code>native/NATIVE_SETUP.md</code> documents the steps.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Built by <strong style="color: var(--text);">Nathan Johnson</strong></p>
+      <p style="margin-top: 12px;">
+        <a href="mailto:johbson19962@gmail.com">Email</a> ·
+        <a href="https://github.com/Natty2027">GitHub</a> ·
+        <a href="index.html">Portfolio</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

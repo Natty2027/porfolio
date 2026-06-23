@@ -27,7 +27,7 @@
       <a class="back-link" href="index.html">← Back to portfolio</a>
       <span class="label">Featured · Mobile · AI</span>
       <h1>Cognivate</h1>
-      <p class="subtitle">An AI study app that turns any document into chapters, vocab, and quizzes. Currently in App Review for the iOS App Store.</p>
+      <p class="subtitle">An AI study app that turns any document into chapters, vocab, quizzes, and interactive practice. Live on the iOS App Store — build 41 on TestFlight.</p>
       <div class="tech-list">
         <span class="tech">React Native</span>
         <span class="tech">Expo</span>
@@ -37,6 +37,9 @@
         <span class="tech">Clerk</span>
         <span class="tech">RevenueCat</span>
         <span class="tech">Sentry</span>
+        <span class="tech">react-native-svg</span>
+        <span class="tech">React Query</span>
+        <span class="tech">Drizzle ORM</span>
       </div>
     </div>
   </section>
@@ -48,17 +51,23 @@
 
       <h3>What I built</h3>
       <ul>
-        <li><strong>Generation pipeline</strong> — accepts noisy student uploads and produces consistently-structured study modules. Structured output, retry-on-parse-error, length-aware chunking for long materials, graceful fallbacks for insufficient input.</li>
-        <li><strong>Subscription infrastructure</strong> — Apple in-app subscriptions through RevenueCat with server-to-server receipt validation via App Store Connect API key. Entitlement-driven feature gates throughout the app, sandbox testing pipeline, and a hardened paywall that handles purchase cancellation, restoration, and post-expiration UX.</li>
-        <li><strong>Custom-domain auth</strong> — Clerk on <code>clerk.cognivate.co</code> with custom OAuth credentials so Google's consent screen shows my branding. Native-app SSO deep-link handling, allow-listed redirect URLs, post-sign-in entitlement sync to RevenueCat.</li>
-        <li><strong>EAS Build release pipeline</strong> — single Expo project ships two app identities. Public TestFlight beta (<code>com.cognivate.mobile</code>) and a v2-preview variant (<code>com.cognivate.mobile.v2</code>) for in-flight features. Selected at build time via <code>APP_VARIANT</code> so iOS treats them as separate apps.</li>
+        <li><strong>Generation pipeline</strong> — accepts noisy student uploads and produces consistently-structured study modules. Structured output, retry-on-parse-error, length-aware chunking for long materials, graceful fallbacks for insufficient input. Per-file 25K char and 100K total context window so more source material reaches the AI.</li>
+        <li><strong>Adaptive practice + grader</strong> — interactive practice problems with a deterministic application-layer grader. Normalizes thousands-commas, unicode minus signs, fraction notation (1/2 → 0.5), and uses the expected answer's decimal precision to avoid false "nearly correct" grades.</li>
+        <li><strong>Graph Lab</strong> — STEM coordinate plotter. AI extracts 3–5 data points and axis metadata from uploaded materials (minimal ~600-token call). User taps an SVG grid to place points; they snap to the nearest grid intersection. Graded exact / within-one-step / incorrect with visual feedback.</li>
+        <li><strong>Source badges</strong> — every AI response carries a source-tier badge (From source, AI fill, etc.). Tapping opens a bottom sheet with the actual document excerpt that grounded the answer — file name, section location, and an italic quote from the source text.</li>
+        <li><strong>Subscription infrastructure</strong> — Apple in-app subscriptions through RevenueCat with server-to-server receipt validation via App Store Connect API key. Entitlement-driven feature gates, sandbox testing pipeline, and a hardened paywall that handles cancellation, restoration, and post-expiration UX.</li>
+        <li><strong>Custom-domain auth</strong> — Clerk on <code>clerk.cognivate.co</code> with custom OAuth credentials so Google's consent screen shows our branding. Native-app SSO deep-link handling, allow-listed redirect URLs, post-sign-in entitlement sync to RevenueCat.</li>
+        <li><strong>EAS Build release pipeline</strong> — single Expo project ships two app identities. Public App Store build (<code>com.cognivate.mobile</code>) and a v2-preview variant for in-flight features. Selected at build time via <code>APP_VARIANT</code> so iOS treats them as separate apps and testers can run both side-by-side.</li>
       </ul>
 
       <h3>What went wrong (and got fixed)</h3>
       <p>Apple rejected the first submission with four issues: ATT/tracking labels, a Google sign-in redirect URL mismatch, an authentication-code blocker on the demo account, and a missing expired-subscription demo state. Fix walked through every dashboard: App Store Connect privacy labels, Clerk's mobile SSO allowlist, App Store Connect API key for RevenueCat receipt validation, and a sandbox subscription cycle to demonstrate the expired state.</p>
 
+      <h3>What went wrong — the App Review gauntlet</h3>
+      <p>Apple rejected the first submission with four issues: ATT/tracking labels, a Google sign-in redirect URL mismatch, an authentication-code blocker on the demo account, and a missing expired-subscription demo state. Fix walked through every dashboard: App Store Connect privacy labels, Clerk's mobile SSO allowlist, App Store Connect API key for RevenueCat receipt validation, and a sandbox subscription cycle to demonstrate the expired state. Approved on the second submission.</p>
+
       <h3>Status</h3>
-      <p>Build 27 in App Review. Real RC sandbox purchases verified end-to-end. TestFlight public-beta link coming after first approval.</p>
+      <p>Live on the iOS App Store. Build 41 current on TestFlight. Active development continues — recent additions include Graph Lab, interactive practice problems, source excerpt sheets, and deeper document analysis.</p>
     </div>
   </section>
 

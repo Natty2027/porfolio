@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cognivate — AI study app that turns your materials into chapters, vocab, and quizzes</title>
-  <meta name="description" content="Cognivate is a mobile study app that generates personalized study modules from any document you upload. Built with React Native, Expo, Claude, and RevenueCat." />
+  <title>Nathan Johnson — Software Engineer</title>
+  <meta name="description" content="Software engineer building shipped products — mobile apps, AI platforms, security tooling, and full-stack web. Cognivate is live on the App Store." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -247,7 +247,7 @@
     <div class="container">
       <div class="badge">Software engineer · Building shipped products</div>
       <h1>I build <span class="accent">full-stack products,</span> from auth to monetization.</h1>
-      <p class="subtitle">Selected work below — mobile apps, AI-powered platforms, security tooling, and full-stack web. Most recent: Cognivate, an AI study app shipping to TestFlight.</p>
+      <p class="subtitle">Selected work below — mobile apps, AI-powered platforms, security tooling, and full-stack web. Cognivate is live on the App Store. Currently building Sentinel Shield, mobile threat defense with on-device DNS filtering and NIST-mapped compliance evidence.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="mailto:johbson19962@gmail.com">Get in touch</a>
         <a class="btn btn-secondary" href="https://github.com/Natty2027">View on GitHub</a>
@@ -262,7 +262,7 @@
         <img class="portrait" src="portrait.jpg" alt="Nathan Johnson" />
         <div>
           <p>Hi — I'm Nathan. I spent twelve years in the Navy running operations and security programs: managing classified material across three continents, leading teams of thirty-plus, and picking up CompTIA Security+ along the way. A couple of years ago I started building software, and it stuck.</p>
-          <p>Now I ship full-stack products — <strong>Cognivate</strong>, an AI study app currently in App Review; a Plaid-powered subscription detector that catches the gym memberships you forgot about; an AI career-prep platform with full Stripe billing and Gemini-driven mock interviews. Usually solo, sometimes with a team.</p>
+          <p>Now I ship full-stack products — <strong>Cognivate</strong>, an AI study app live on the App Store; <strong>Sentinel Shield</strong>, a mobile threat defense app that turns every blocked DNS threat into a security lesson and hash-chained compliance evidence; a Plaid-powered subscription detector; and an AI career-prep platform with full Stripe billing. Usually solo, sometimes with a team.</p>
           <p class="muted">Graduated from San Francisco State in December 2025 — BA, Cum Laude, Criminal Justice Studies with a Computer Science minor. Currently pursuing my MBA at SF State while taking on engineering work. Looking for roles where the code ends up in front of real people. Based in Walnut Creek, CA — reach me at <a href="mailto:johbson19962@gmail.com" style="color: var(--accent); text-decoration: none;">johbson19962@gmail.com</a>.</p>
         </div>
       </div>
@@ -344,19 +344,23 @@
   <section id="featured">
     <div class="container">
       <h2>Featured · Cognivate</h2>
-      <p><strong>AI study app shipping to the App Store.</strong> Mobile app that ingests PDFs, photos of notes, and pasted text — then uses Claude to generate personalized chapters, vocab cards, and quiz questions. Currently in App Review.</p>
+      <p><strong>AI study app — live on the App Store.</strong> Mobile app that ingests PDFs, photos of notes, and pasted text — then uses Claude to generate personalized chapters, vocab cards, adaptive quizzes, and source-linked study notes. Build 41 shipping to TestFlight.</p>
       <div class="grid-3" style="margin-top: 24px;">
         <div class="card">
           <h3>Upload</h3>
-          <p>PDFs, photos of notes, and pasted text. Multi-document study sets.</p>
+          <p>PDFs, photos of notes, and pasted text. Multi-document study sets with deep document analysis.</p>
         </div>
         <div class="card">
           <h3>Generate</h3>
-          <p>Claude reads the material and produces structured chapters, vocab cards, and quiz questions.</p>
+          <p>Claude reads the material and produces structured chapters, vocab cards, quiz questions, and practice problems.</p>
         </div>
         <div class="card">
           <h3>Practice</h3>
-          <p>Spaced-repetition flashcards, adaptive quizzes, audio tutor mode, daily streaks.</p>
+          <p>Adaptive quizzes, interactive practice problems, audio tutor mode, daily streaks, and source badges linking answers back to your documents.</p>
+        </div>
+        <div class="card">
+          <h3>Graph Lab</h3>
+          <p>STEM coordinate plotter — AI generates data points from your materials; tap to place them on a live SVG grid and check your answers.</p>
         </div>
       </div>
       <div class="tech-list">
@@ -380,6 +384,26 @@
   <section id="work">
     <div class="container">
       <h2>Selected work</h2>
+
+      <div class="case-study">
+        <span class="label">Mobile · Security · Compliance</span>
+        <h3>Sentinel Shield</h3>
+        <p>Mobile threat defense app that blocks malicious DNS and URLs in real time using a native iOS Network Extension, then turns every blocked event into an interactive security lesson and machine-verifiable compliance evidence mapped to NIST SP 800-171 controls.</p>
+        <p>Evidence is hash-chained and signed so it can be audited or shared with compliance officers without revealing browsing history. Built on the same React Native / Expo foundation as Cognivate, with a native Swift boundary for the on-device filter and an App Group bridge for cross-process event delivery.</p>
+        <div class="tech-list">
+          <span class="tech">React Native</span>
+          <span class="tech">Expo</span>
+          <span class="tech">TypeScript</span>
+          <span class="tech">Swift</span>
+          <span class="tech">Network Extension</span>
+          <span class="tech">iOS App Groups</span>
+          <span class="tech">NIST SP 800-171</span>
+          <span class="tech">Hash-chain evidence</span>
+        </div>
+        <div class="case-links">
+          <a href="sentinel.html">Learn more →</a>
+        </div>
+      </div>
 
       <div class="case-study">
         <span class="label">AI · Career platform</span>
